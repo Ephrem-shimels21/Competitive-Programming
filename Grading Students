@@ -1,0 +1,7 @@
+def gradingStudents(grades):
+    for scores in grades:
+        if scores < 38 or (((scores // 5 + 1) * 5) - scores) >= 3 :
+            grades[grades.index(scores)]=scores
+        elif scores >=38 and  (((scores // 5 + 1) * 5) - scores ) < 3:
+            grades[grades.index(scores)]=(((scores // 5) + 1) *5)
+    return grades
