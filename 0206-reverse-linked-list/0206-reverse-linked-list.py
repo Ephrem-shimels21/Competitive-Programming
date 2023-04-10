@@ -9,3 +9,4 @@ class Solution:
         while cur:
             cur.next, cur, pre = pre, cur.next, cur
         return pre
+        
