@@ -5,8 +5,7 @@ class Solution:
             if ele in count.keys():
                 count[ele] += 1
             else:
-                count[ele] = 0
-                count[ele] += 1
+                count[ele] = 1
        
         
         for freq in count.values():
