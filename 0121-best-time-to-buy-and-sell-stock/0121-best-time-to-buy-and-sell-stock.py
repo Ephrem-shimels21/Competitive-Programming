@@ -9,7 +9,6 @@ class Solution:
                 profit = max(prices[j] - prices[i],profit)
                 i  = j
                 j += 1
-                
             else:
                 profit = max(prices[j] - prices[i],profit)
                 j += 1
