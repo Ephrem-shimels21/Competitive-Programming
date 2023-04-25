@@ -8,6 +8,7 @@ class Solution:
     # def __init__(self):
     #     self.summ = 0
     def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+        
         def myfun(node, summ):
             if node == None:
                 return False
@@ -16,17 +17,7 @@ class Solution:
                 if summ == targetSum:
                     return True
             return (myfun(node.left,summ) or myfun(node.right,summ))
-        return myfun(root, 0)
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        return myfun(root, 0) 
         
         
         
@@ -37,10 +28,13 @@ class Solution:
 #             if node == None:
 #                 return False
 #             self.summ += node.val
-#             if self.summ == targetSum:
-#                 return True
+#             print(self.summ)
+#             print("first",node.val)
 #             if node.left == None and node.right == None:
+#                 if self.summ == targetSum:
+#                     return True
 #                 self.summ -= node.val
+    
 #             return (myfun(node.left) or myfun(node.right))
             
 #         return myfun(root)
