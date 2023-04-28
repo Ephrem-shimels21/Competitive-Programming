@@ -7,7 +7,6 @@ class Solution:
             else:
                 count[ele] = 1
        
-        
         for freq in count.values():
             if freq >= 2:
                 return True
