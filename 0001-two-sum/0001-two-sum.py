@@ -18,6 +18,5 @@ class Solution:
                 for ele in store.values():
                     if nums[i] == ele[0] or nums[j] == ele[0]:
                         ans.append(ele[1])
-                
                 return ans
         
