@@ -31,8 +31,7 @@ class Solution:
                 ans.append(nums2[j])
                 i += 1
                 j += 1
-        
-        
+    
         for i,ele in enumerate(ans):
             nums1[i] = ele
             
