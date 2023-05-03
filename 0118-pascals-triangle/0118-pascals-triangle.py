@@ -10,7 +10,6 @@ class Solution:
             pascalTri[i - 1].insert(0,0)
             j = 0
             k = 1
-            print(pascalTri[i - 1])
             while k < len(pascalTri[i - 1]):
                 pascalTri[i].append((pascalTri[i - 1])[j] + (pascalTri[i - 1])[k])
                 j += 1
