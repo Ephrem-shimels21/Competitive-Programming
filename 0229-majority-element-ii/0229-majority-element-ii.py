@@ -5,13 +5,13 @@ class Solution(object):
         :rtype: List[int]
         """
         limit = len(nums) // 3
-        ans = []
+        ans = set()
         
         for index,num in enumerate(nums):
             if nums.count(num) > limit:
                 if num not in ans:
-                    ans.append(num)
+                    ans.add(num)
                 else:
                     continue
            
-        return ans
+        return list(ans)
