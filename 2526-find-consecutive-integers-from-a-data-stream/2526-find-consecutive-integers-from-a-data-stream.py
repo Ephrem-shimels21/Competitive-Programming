@@ -4,30 +4,20 @@ class DataStream:
         self.DataStream = []
         self.value = value
         self.k = k
-        self.length = 0
-        self.previous = None
-        self.no_value = None
+        self.no_value = 0
         
 
     def consec(self, num: int) -> bool:
         self.DataStream.append(num)
-        self.length += 1
-        # index  = self.length - self.k
-        # self.previous = num
-        if self.previous == None:
-            self.previous = num
-            self.no_value = 1
-        elif self.previous == num:
+        
+        if num == self.value:
             self.no_value += 1
-        elif self.previous != num:
-            self.no_value = 1
-            self.previous = num
+        else:
+            self.no_value = 0
       
-        if self.length >= self.k:
-            if num ==self.previous == self.value and self.no_value >= self.k:
-                return True
-            else:
-                return False
+      
+        if self.no_value >= self.k:
+            return True
         return False
         
 
