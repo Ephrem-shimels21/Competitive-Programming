@@ -17,9 +17,15 @@ class Solution:
                 if (x,y) not in visited:
                     visited.add((x,y))
                 for a, b in movements:
-                    if x + a  in range(n) and  y + b in range(w) and grid[x + a][y + b] == "1" and (x + a,y + b) not in visited:
-                        qeue.append((x + a,y + b))
-                        visited.add((x + a,y + b))
+                    if x + a < 0 or x + a >= n or y + b  < 0 or y + b >= w:
+                        continue
+                    else:
+                        if grid[x + a][y + b] == "1" and (x + a, y + b) not in visited:
+                            qeue.append((x + a,y + b))
+                            visited.add((x + a,y + b))
+                    # if x + a  in range(n) and  y + b in range(w) and grid[x + a][y + b] == "1" and (x + a,y + b) not in visited:
+                    #     qeue.append((x + a,y + b))
+                    #     visited.add((x + a,y + b))
 
         for r in range(n):
             for c in range(w):
