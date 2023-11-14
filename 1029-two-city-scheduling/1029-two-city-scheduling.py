@@ -14,8 +14,10 @@ class Solution:
         k = len(costs) - 1
         
         while j < k:
-            summ += costs[difference[j][0]][1]
-            summ += costs[difference[k][0]][0]
+            bs_index = difference[j][0]
+            as_index = difference[k][0]
+            summ += costs[bs_index][1]
+            summ += costs[as_index][0]
             j += 1
             k -= 1
         
