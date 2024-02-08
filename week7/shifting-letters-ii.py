@@ -5,26 +5,26 @@ class Solution(object):
         :type shifts: List[List[int]]
         :rtype: str
         """
-        shiftAmount = [0] * len(s)
-            
+        total_shifts = [0] * (len(s) + 1)
         for shift in shifts:
-            if shift[-1]  == 0:
-                shiftAmount[shift[0]] -= 1
-                if shift[1] < (len(s) - 1):
-                    shiftAmount[shift[1] + 1] += 1
-            elif shift[-1] == 1:
-                shiftAmount[shift[0]] += 1
-                if shift[1] < len(s) - 1:
-                    shiftAmount[shift[1] + 1] -= 1
+            start, end, forward = shift
+            if forward:
+                total_shifts[start] += 1
+                total_shifts[end + 1] -= 1
+            else:
+                total_shifts[start] -= 1
+                total_shifts[end + 1] += 1
         
-        for index in range(1,len(shiftAmount)):
-            shiftAmount[index] = shiftAmount[index] + shiftAmount[index - 1]
+        for i in range(1, len(total_shifts)):
+            total_shifts[i] = total_shifts[i - 1] + total_shifts[i]
         
-        shifted = []
-        for i in range(len(s)):
-            shift_value = shiftAmount[i] % 26
-            shifted_char = chr((ord(s[i]) - ord('a') + shift_value) % 26 + ord('a'))
-            shifted.append(shifted_char)
+        shifted_letters = []
 
-        return ''.join(shifted)
-    
+        for idx, letter in enumerate(s):
+            shifted_letter = chr(((ord(letter) - 97 + total_shifts[idx]) % 26) + 97)
+            shifted_letters.append(shifted_letter)
+        
+
+        return ''.join(shifted_letters)
+
+
