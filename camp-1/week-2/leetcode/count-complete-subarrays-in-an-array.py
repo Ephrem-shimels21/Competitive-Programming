@@ -1,16 +1,26 @@
 class Solution:
     def countCompleteSubarrays(self, nums: List[int]) -> int:
-        n = len(set(nums))
+        whole_distinct = defaultdict(int)
+
+        for num in nums:
+            whole_distinct[num] += 1
+        
+        subarr_distinct = defaultdict(int)
         completes = 0
+        l = 0
 
-        for i in range(len(nums)):
-            temp = set()
-            temp.add(nums[i])
-            if len(temp) == n:
-                completes += 1
-            for j in range(i + 1, len(nums)):
-                temp.add(nums[j])
-                if len(temp) == n:
-                    completes += 1
+        for idx,num in enumerate(nums):
+            subarr_distinct[num] += 1
+            while len(subarr_distinct) == len(whole_distinct):
+                completes += len(nums) - idx
+                subarr_distinct[nums[l]] -= 1
+                if subarr_distinct[nums[l]] == 0:
+                    subarr_distinct.pop(nums[l])
+                l += 1
 
+        
         return completes
+
+
+
+        
