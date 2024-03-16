@@ -1,36 +1,23 @@
 class Solution:
     def findRightInterval(self, intervals: List[List[int]]) -> List[int]:
-        intervals_copy = []
+        index_start = {}
+        starts = []
 
-        for idx, interval in enumerate(intervals):
-            start, end = interval
-            intervals_copy.append([start, end, idx])
-
-        intervals_copy.sort(key = lambda x : x[0])
-        output = []
-        print(intervals_copy)
-
-        for interval in intervals:
-            start, end = interval
-            l = 0
-            r = len(intervals) - 1
-            curr = float('inf')
-
-            while l <= r:
-                mid = (l + r) // 2
-                startj, endj, idx = intervals_copy[mid]
-                if startj > end:
-                    if (curr != float('inf') and intervals[curr][0] > startj) or curr == float('inf'):
-                        curr = idx
-                    r = mid  - 1  
-                elif startj == end:
-                    curr = idx
-                    break              
-                else:
-                    l = mid + 1
-            if curr == float('inf'):
-                output.append(-1)
-            else:
-                output.append(curr)
+        for i in range(len(intervals)):
+            index_start[intervals[i][0]] = i
+            starts.append(intervals[i][0])
         
-        return output
+        res = []
+        starts.sort()
+        for j in range(len(intervals)):
+            idx = bisect_left(starts, intervals[j][1])
+
+            if idx < len(intervals):
+                res.append(index_start[starts[idx]])
+            
+            else:
+                res.append(-1)
+        
+        return res
+
+        
